@@ -2,7 +2,7 @@ from groq import Groq
 import os
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from utils.prompts import workout_prompt
+from app.utils.prompts import workout_prompt
 
 client = Groq(
     api_key=os.environ.get("GROQ_API_KEY")

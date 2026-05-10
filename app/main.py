@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, session
-#from ai.ollama_client import generate_workout
+from app.ai.ollama_client import generate_workout
 from ai.ollama_client import generate_workout, ask_coach
 from database import init_db
 from flask import redirect
