@@ -17,7 +17,7 @@ def generate_workout(age, height, weight, goal, experience, workout_type, diet, 
     )
 
     response = client.chat.completions.create(
-        model="llama3-8b-8192",
+        model="llama-3.1-8b-instant",
         messages=[
             {"role": "user", "content": prompt}
         ],
