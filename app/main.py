@@ -11,6 +11,7 @@ import numpy as np
 import os
 
 app = Flask(__name__)
+init_db()
 app.secret_key = "fitgen_secret_key"
 
 @app.route("/", methods=["GET", "POST"])
