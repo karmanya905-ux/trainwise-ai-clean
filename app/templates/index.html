@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrainWise AI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="TrainWise Logo">
+    <span>TrainWise AI</span>
+</div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/tracker">Tracker</a>
+        <a href="/coach">Coach</a>
+        <a href="/mealplanner">Nutrition</a>
+    </div>
+</nav>
+
+<div class="hero-bg"></div>
+<div class="hero-bg hero-bg-2"></div>
+
+<section class="hero">
+
+    <div class="hero-left">
+        <span class="hero-badge">AI FITNESS INTELLIGENCE PLATFORM</span>
+
+        <h1 class="hero-title">
+            Transform Your Fitness Journey With Intelligent Coaching
+        </h1>
+
+        <p class="hero-subtitle">
+            Personalized AI workout planning, smart nutrition guidance, adaptive coaching, and progress analytics — all in one premium platform.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#planner" class="primary-btn">Build My Plan</a>
+            <a href="/coach" class="secondary-btn">Talk to AI Coach</a>
+        </div>
+
+        <div class="mini-stats">
+            <div class="mini-card">
+                <h3>AI Coaching</h3>
+                <p>24/7</p>
+            </div>
+
+            <div class="mini-card">
+                <h3>Progress Tracking</h3>
+                <p>Live</p>
+            </div>
+
+            <div class="mini-card">
+                <h3>Nutrition Planning</h3>
+                <p>Smart</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-right">
+        <div class="floating-card float-1">
+            🔥 Personalized Workout Intelligence
+        </div>
+
+        <div class="floating-card float-2">
+            📈 Progress Analytics Dashboard
+        </div>
+
+        <div class="floating-card float-3">
+            🤖 AI Coach Assistance
+        </div>
+    </div>
+
+</section>
+
+<div class="container" id="planner">
+
+<h1>Generate Your AI Fitness Blueprint</h1>
+<a href="/download-plan" class="primary-btn">Download PDF Plan</a>
+<br><br>
+<p>Built for fat loss, muscle gain, intelligent nutrition, and consistent transformation.</p>
+
+<form method="POST" onsubmit="showLoader()">
+
+<input type="number" name="age" placeholder="Enter Age" required>
+<input type="number" name="height" placeholder="Height (cm)" required>
+<input type="number" name="weight" placeholder="Weight (kg)" required>
+
+<select name="goal" required>
+<option value="">Select Goal</option>
+<option value="fat loss">Fat Loss</option>
+<option value="muscle gain">Muscle Gain</option>
+<option value="maintenance">Maintenance</option>
+</select>
+
+<select name="experience" required>
+<option value="">Training Experience</option>
+<option value="beginner">Beginner</option>
+<option value="intermediate">Intermediate</option>
+</select>
+
+<select name="workout_type" required>
+<option value="">Workout Type</option>
+<option value="gym">Gym</option>
+<option value="home">Home</option>
+</select>
+
+<select name="diet" required>
+<option value="">Diet Preference</option>
+<option value="vegetarian">Vegetarian</option>
+<option value="non-vegetarian">Non-Vegetarian</option>
+</select>
+
+<button type="submit">Generate My AI Plan</button>
+
+</form>
+
+<div id="loader" class="loader">
+Generating your intelligent transformation blueprint...
+</div>
+
+{% if bmi %}
+<div class="stats">
+
+<div class="card">
+<h3>BMI</h3>
+<p class="counter" data-target="{{ bmi }}">0</p>
+</div>
+
+<div class="card">
+<h3>Maintenance</h3>
+<p class="counter" data-target="{{ maintenance }}">0</p>
+</div>
+
+<div class="card">
+<h3>Goal Calories</h3>
+<p class="counter" data-target="{{ goal_calories }}">0</p>
+</div>
+
+<div class="card">
+<h3>Protein Target</h3>
+<p class="counter" data-target="{{ protein }}">0</p>
+</div>
+
+</div>
+{% endif %}
+
+{% if bmi %}
+<div class="stats">
+
+    <div class="card">
+        <h3>Consistency Score</h3>
+        <p>92%</p>
+    </div>
+
+    <div class="card">
+        <h3>AI Readiness</h3>
+        <p>High</p>
+    </div>
+
+    <div class="card">
+        <h3>Recovery Index</h3>
+        <p>8.7</p>
+    </div>
+
+    <div class="card">
+        <h3>Transformation Level</h3>
+        <p>Elite</p>
+    </div>
+
+</div>
+{% endif %}
+
+</div>
+
+<script>
+function showLoader() {
+    document.getElementById("loader").style.display = "block";
+}
+</script>
+
+<script>
+const counters = document.querySelectorAll('.counter');
+
+counters.forEach(counter => {
+    const updateCounter = () => {
+        const target = +counter.getAttribute('data-target');
+        const current = +counter.innerText;
+
+        const increment = target / 50;
+
+        if (current < target) {
+            counter.innerText = Math.ceil(current + increment);
+            setTimeout(updateCounter, 25);
+        } else {
+            counter.innerText = target;
+        }
+    };
+
+    updateCounter();
+});
+</script>
+
+</body>
+</html>

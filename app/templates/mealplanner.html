@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrainWise AI Nutrition Planner</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="TrainWise Logo">
+    <span>TrainWise AI</span>
+</div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/tracker">Tracker</a>
+        <a href="/coach">Coach</a>
+        <a href="/mealplanner">Nutrition</a>
+    </div>
+</nav>
+
+<div class="hero-bg"></div>
+<div class="hero-bg hero-bg-2"></div>
+
+<div class="container">
+
+<h1>AI Nutrition Planner</h1>
+<p>Generate personalized intelligent meal plans based on your fitness goal.</p>
+
+<div class="stats">
+
+    <div class="card">
+        <h3>Smart Meals</h3>
+        <p>🍽️</p>
+    </div>
+
+    <div class="card">
+        <h3>Macro Guidance</h3>
+        <p>🥗</p>
+    </div>
+
+    <div class="card">
+        <h3>AI Nutrition</h3>
+        <p>🤖</p>
+    </div>
+
+    <div class="card">
+        <h3>Goal Based</h3>
+        <p>🎯</p>
+    </div>
+
+</div>
+
+<br>
+
+<form method="POST">
+
+<select name="goal" required>
+<option value="">Select Goal</option>
+<option value="fat loss">Fat Loss</option>
+<option value="muscle gain">Muscle Gain</option>
+<option value="maintenance">Maintenance</option>
+</select>
+
+<input type="number" name="calories" placeholder="Target Calories" required>
+
+<select name="diet" required>
+<option value="">Diet Preference</option>
+<option value="vegetarian">Vegetarian</option>
+<option value="non-vegetarian">Non-Vegetarian</option>
+</select>
+
+<select name="meals" required>
+<option value="">Meals Per Day</option>
+<option value="3">3 Meals</option>
+<option value="4">4 Meals</option>
+<option value="5">5 Meals</option>
+<option value="6">6 Meals</option>
+</select>
+
+<button type="submit">Generate AI Meal Plan</button>
+
+</form>
+
+{% if meal_plan %}
+<div class="result">
+    <h2>Your AI Nutrition Blueprint</h2>
+    <pre>{{ meal_plan }}</pre>
+</div>
+{% endif %}
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrainWise AI Coach</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="TrainWise Logo">
+    <span>TrainWise AI</span>
+</div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/tracker">Tracker</a>
+        <a href="/coach">Coach</a>
+        <a href="/mealplanner">Nutrition</a>
+    </div>
+</nav>
+
+<div class="container">
+
+<h1>TrainWise AI Coach</h1>
+<p>Your personal AI fitness strategist.</p>
+
+<div class="chat-shell">
+
+    {% if answer %}
+        <div class="chat-bubble user-bubble">
+            {{ request.form.get("question") }}
+        </div>
+
+        <div class="chat-bubble ai-bubble">
+            <pre>{{ answer }}</pre>
+        </div>
+    {% else %}
+        <div class="chat-bubble ai-bubble">
+            <pre>
+Hello 👋
+I'm TrainWise AI.
+
+Ask me about:
+• fat loss
+• muscle gain
+• nutrition
+• supplements
+• workouts
+• progress plateaus
+            </pre>
+        </div>
+    {% endif %}
+
+</div>
+
+<form method="POST" class="chat-form">
+<div id="typing-indicator" class="typing-indicator" style="display:none;">
+    <div class="typing-bubble">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+
+<form method="POST" class="chat-form" onsubmit="showTyping()">
+    <input type="text" name="question" placeholder="Ask TrainWise AI anything..." required>
+    <button type="submit">Send</button>
+</form>
+
+</div>
+
+<script>
+function showTyping() {
+    document.getElementById("typing-indicator").style.display = "flex";
+}
+</script>
+</body>
+</html>
