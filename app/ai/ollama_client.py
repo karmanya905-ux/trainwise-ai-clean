@@ -22,7 +22,7 @@ def generate_workout(age, height, weight, goal, experience, workout_type, diet, 
             {"role": "user", "content": prompt}
         ],
         temperature=0.6,
-        max_tokens=700
+        max_tokens=701
     )
 
     return response.choices[0].message.content
