@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request, redirect, session
-from app.ai.ollama_client import generate_workout
-from ai.ollama_client import generate_workout, ask_coach
-from database import init_db
+from app.ai.ollama_client import generate_workout, ask_coach
+from app.database import init_db
 from flask import redirect
-from weight_service import add_weight, get_weights
+from app.weight_service import add_weight, get_weights
 from flask import send_file
 from reportlab.pdfgen import canvas
 import io
